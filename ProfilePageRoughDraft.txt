@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div class="topnav">
+        <input type="text" placeholder="Search..">
+        <a class="active" href="#home">Alerts</a>
+        <a class="active" href=#profile>Profile</a>
+        </p>
+      </div>
+    <div class="header">
+    </div>
+    
+  
+<title>Profile</title>
+</head>
+<body>
+<h1>Saved Palettes:</h1>
+<div id="container">
+    <p class="boxed">
+        This text is enclosed in a box.
+    </p>  
+    <p class="boxed">
+        This text is enclosed in a box.
+    </p>  
+    <p class="boxed">
+        This text is enclosed in a box.
+    </p>  
+    <p class="boxed">
+        This text is enclosed in a box.
+    </p>  
+  </div>
+  <div>
+<h1>Friends:</h1>
+<p id="circle">
+</p>
+<p id="circle">
+</p>
+<p id="circle">
+</p>
+<p id="circle">
+</p>
+     
+</div>
+  </div>
+</body>
+</html>
+
+<style> 
+    .header {
+     padding: 130px;
+     text-align: center;
+
+     background: url(https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_960_720.jpg);
+     color: white;
+     font-size: 30px;
+   }
+   .boxed {
+   border: 1px solid black ;
+   text-align: center; 
+   width: 200px;
+   height: 200px; 
+   display: inline-block;
+   background: pink
+ }
+ #circle {
+      width: 140px;
+      height: 140px;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid black; 
+      border-radius: 70px;
+      border-radius: 70px;
+      border-radius: 70px;
+      background: pink;
+      display: inline-block; 
+    }
+ 
+
