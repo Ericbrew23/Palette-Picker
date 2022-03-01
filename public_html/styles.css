@@ -63,3 +63,7 @@ p {
   padding: 50px;
   border-radius: 8px;
 }
+
+#credentials{
+  text-align: center;
+}
