@@ -10,7 +10,7 @@
         <?php
         require("./dbConnection.php");
 
-        $res = getUserID("exampleUser");//->fetch_assoc();
+        $res = getUserID("exampleUser");
 
         if ($res->num_rows > 0) {
           while($row = $res->fetch_assoc())     
