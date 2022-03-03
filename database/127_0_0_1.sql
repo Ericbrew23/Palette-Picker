@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2022 at 08:36 PM
+-- Generation Time: Mar 03, 2022 at 05:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `app`
 --
+DROP DATABASE IF EXISTS `app`;
 CREATE DATABASE IF NOT EXISTS `app` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `app`;
 
@@ -81,6 +82,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`USER_ID`, `USER_NAME`, `USER_PASSWORD`) VALUES
+(1, 'exampleUser', 'password');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -126,7 +134,7 @@ ALTER TABLE `palette`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
