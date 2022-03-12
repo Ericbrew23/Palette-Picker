@@ -1,0 +1,87 @@
+<title id='titlename' > :) </title>
+
+<div id="rainbowImg">
+    <img
+      src="images/RainbowHeader.png"
+      alt="A rainbow gradient with 
+      black stripes."
+    />
+   
+  </div>
+
+<canvas id="TopColour" Width="500" Height="250">
+    <script>
+        var c = document.getElementById("TopColour");
+        var ctx = c.getContext('2d');
+        var imageData= ctx.createImageData(500,250);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            // Percentage in the x direction, times 255
+            let x = (i % 2000) / 2000 * 255;
+            // Percentage in the y direction, times 255
+            let y = Math.ceil(i / 1000) / 250 * 255;
+
+            // Modify pixel data
+            imageData.data[i + 0] = x;        // R value
+            imageData.data[i + 1] = y;        // G value
+            imageData.data[i + 2] = 255 - x;  // B value
+            imageData.data[i + 3] = 255;      // A value
+        }
+
+        // Draw image data to the canvas
+        ctx.putImageData(imageData, 20, 20);
+    </script>
+</canvas>
+
+
+
+<div id="Colour blocks">
+    <canvas id="Colour1" width="100" Height="200">
+        <script>
+            var c = document.getElementById("Colour1");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(10, 10, 150, 80);
+        </script>
+    </canvas>
+
+    <canvas id="Colour2" width="100" Height="200">
+        <script>
+            var c = document.getElementById("Colour2");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(10, 10, 150, 80);
+        </script>
+    </canvas>
+
+    <canvas id="Colour3" width="100" Height="200">
+        <script>
+            var c = document.getElementById("Colour3");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(10, 10, 150, 80);
+        </script>
+    </canvas>
+
+    <canvas id="Colour4" width="100" Height="200">
+        <script>
+            var c = document.getElementById("Colour4");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(10, 10, 150, 80);
+        </script>
+    </canvas>
+
+    <canvas id="Colour5" width="100" Height="200">
+        <script>
+            var c = document.getElementById("Colour5");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(10, 10, 150, 80);
+        </script>
+    </canvas>
+</div>
+
+<button name="Refresh_Button">Refresh</button>
+
+
+<button name="Save_Button"">Finish</button>
