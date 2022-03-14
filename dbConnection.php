@@ -30,13 +30,12 @@ function sendToDB($sql){
     closeDB($conn);
     return $result;
 }
-
 function verifyUser(){
     // $sql = SELECT //
 }
 
+//select data functions:
 
-//select data
 function getUserID($username){
     $sql = "SELECT USER_ID FROM USER WHERE USER_NAME = '" . $username . "'";
     return getFromDB($sql);
@@ -47,21 +46,26 @@ function getUserFriends($id){
     return getFromDB($sql);
 }
 
-function sendNewPaletteToDb($userID, $paletteName, $hex1, $hex2, $hex3, $hex4, $hex5){
-    $sql = "INSERT INTO 'palette' (USER_ID, PALETTE_NAME, HEXCODE1, HEXCODE2, 
-    HEXCODE3, HEXCODE4, HEXCODE5, DATE_CREATED, NUM_VIEWS) VALUES ('" . $userID . "', '"
-    . $paletteName . "', '" . $hex1 . "', '" . $hex2 . "', '" . $hex3 . "', '" 
-    . $hex4 . "', '" . $hex5 . "', now(), '0')";
-}
-
 function getUserSavedPalettes(){
 
 }
 
-//insert data
+//insert data functions:
+
 function sendNewUserToDb($username, $password){
-    //if(getuserID($username)) //if no user ids returned
+    //assuming username has already been checked to make sure it has not been taken
+    $sql = "INSERT INTO 'user' (USER_NAME, USER_PASSWORD) VALUES ('". $username . "', '"
+    . $password . "')";
+    return sendToDB($sql);
     
 }
 
-//test
+function sendNewPaletteToDb($userID, $paletteName, $hex1, $hex2, $hex3, $hex4, $hex5){
+    $sql = "INSERT INTO 'palette' (USER_ID, PALETTE_NAME, HEXCODE1, HEXCODE2, 
+    HEXCODE3, HEXCODE4, HEXCODE5, DATE_CREATED, NUM_VIEWS) VALUES ('" . $userID . "', '"
+    . $paletteName . "', '" . $hex1 . "', '" . $hex2 . "', '" . $hex3 . "', '" . $hex4 . 
+    "', '" . $hex5 . "', now(), '0')";
+    return sendToDB($sql);
+}
+
+?>
