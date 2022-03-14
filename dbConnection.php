@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 
 function connectToDB(){
     require("./systemData.php");
@@ -47,12 +47,19 @@ function getUserFriends($id){
     return getFromDB($sql);
 }
 
+function sendNewPaletteToDb($userID, $paletteName, $hex1, $hex2, $hex3, $hex4, $hex5){
+    $sql = "INSERT INTO 'palette' (USER_ID, PALETTE_NAME, HEXCODE1, HEXCODE2, 
+    HEXCODE3, HEXCODE4, HEXCODE5, DATE_CREATED, NUM_VIEWS) VALUES ('" . $userID . "', '"
+    . $paletteName . "', '" . $hex1 . "', '" . $hex2 . "', '" . $hex3 . "', '" 
+    . $hex4 . "', '" . $hex5 . "', now(), '0')";
+}
+
 function getUserSavedPalettes(){
 
 }
 
 //insert data
-function createUser($username, $password){
+function sendNewUserToDb($username, $password){
     //if(getuserID($username)) //if no user ids returned
     
 }
