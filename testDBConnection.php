@@ -7,6 +7,8 @@
   </head>
   <body>
         <h1>DB Test</h1>
+
+        <p>Test getUserID</p>
         <?php
         require("./dbConnection.php");
 
@@ -18,5 +20,24 @@
         }    
 
         ?>
+        <p>Test verifyUser</P>
+        <?php
+        //require("./dbConnection.php");
+        $res = verifyUser("exampleUser", "password");
+
+        if($res == true)
+          echo "User is verified.";
+        else
+          echo "User is not verified.";
+
+
+        $res2 = verifyUser("exampleUser", "pwd");
+        if($res2 == true)
+          echo "User is verified.";
+        else
+          echo "User is not verified.";
+
+        ?>
+
   </body>
 </html>
