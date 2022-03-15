@@ -30,8 +30,21 @@ function sendToDB($sql){
     closeDB($conn);
     return $result;
 }
-function verifyUser(){
-    // $sql = SELECT //
+
+//verification functions:
+
+function verifyUser($username, $password){
+    $sql = "SELECT COUNT(*) AS TOTAL FROM USER WHERE USER_NAME = '" . $username . "' AND 
+    USER_PASSWORD = '" . $password . "'";
+    $result = getFromDB($sql);
+    $data = mysqli_fetch_assoc($result);    
+
+    $count = $data['TOTAL'];
+
+    //echo "verifyUser(): count = $count\n";
+    //echo "value = ". ($count == 1?'t':'f') . "\n";
+    return $count == 1;
+
 }
 
 //select data functions:
