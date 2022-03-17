@@ -26,16 +26,20 @@
         $res = verifyUser("exampleUser", "password");
 
         if($res == true)
-          echo "User is verified.";
+          echo "User is verified.\n";
         else
-          echo "User is not verified.";
+          echo "User is not verified.\n";
 
 
         $res2 = verifyUser("exampleUser", "pwd");
         if($res2 == true)
-          echo "User is verified.";
+          echo "User is verified.\n";
         else
-          echo "User is not verified.";
+          echo "User is not verified.\n";
+
+        $res3 = verifyUsernameNotTaken("exampleUser");
+
+        echo "Result should be false. Result: " . ($res3?'t':'f') . "\n";
 
         ?>
 
