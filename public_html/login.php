@@ -33,9 +33,8 @@
         $doesUserExist = verifyUser($_POST['username'], $_POST['password']);
         
         if($doesUserExist){
-          header("/homePageLoggedIn.html");
+          header("Location: ./homePageLoggedIn.html");
           exit;
-        //echo "User exists";
         }
         else
           echo "Username or password is incorrect.";
