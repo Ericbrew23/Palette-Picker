@@ -28,6 +28,18 @@
         <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
         <button type="submit" href="homePageLoggedIn.html">LOGIN</button>
     </form>
+      <?php
+        require("./dbConnection.php");
+        $doesUserExist = verifyUser($_POST['username'], $_POST['password']);
+        
+        if($doesUserExist){
+          header("/homePageLoggedIn.html");
+          exit;
+        //echo "User exists";
+        }
+        else
+          echo "Username or password is incorrect.";
+      ?>
     </div>
 </body>
 </html>

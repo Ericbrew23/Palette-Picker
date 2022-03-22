@@ -10,7 +10,7 @@
 
         <p>Test getUserID</p>
         <?php
-        require("./dbConnection.php");
+        require("./public_html/dbConnection.php");
 
         $res = getUserID("exampleUser");
 

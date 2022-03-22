@@ -1,7 +1,7 @@
 <?php 
 
 function connectToDB(){
-    require("./systemData.php");
+    require("../systemData.php");
     $conn = new mysqli($SERVER, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
     if($conn->connect_error){
