@@ -44,7 +44,15 @@ function verifyUser($username, $password){
     //echo "verifyUser(): count = $count\n";
     //echo "value = ". ($count == 1?'t':'f') . "\n";
     return $count == 1;
+}
 
+function verifyUsernameNotTaken($username){
+    $sql = "SELECT COUNT(*) AS TOTAL FROM USER WHERE USER_NAME = '" . $username . "'";
+    $result = getFromDB($sql);
+    $data = mysqli_fetch_assoc($result);
+
+    //returns true if username is NOT taken
+    return $data['TOTAL'] == 0;
 }
 
 //select data functions:
@@ -59,8 +67,9 @@ function getUserFriends($id){
     return getFromDB($sql);
 }
 
-function getUserSavedPalettes(){
-
+function getUserSavedPaletteIDs($userID){
+    $sql = "SELECT PALETTE_ID FROM SAVED_PALETTE WHERE USER_ID = " . $userID;
+    return getFromDB($sql);
 }
 
 //insert data functions:
