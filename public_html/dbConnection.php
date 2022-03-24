@@ -76,14 +76,14 @@ function getUserSavedPaletteIDs($userID){
 
 function sendNewUserToDb($username, $password){
     //assuming username has already been checked to make sure it has not been taken
-    $sql = "INSERT INTO 'user' (USER_NAME, USER_PASSWORD) VALUES ('". $username . "', '"
+    $sql = "INSERT INTO user (USER_NAME, USER_PASSWORD) VALUES ('". $username . "', '"
     . $password . "')";
     return sendToDB($sql);
     
 }
 
 function sendNewPaletteToDb($userID, $paletteName, $hex1, $hex2, $hex3, $hex4, $hex5){
-    $sql = "INSERT INTO 'palette' (USER_ID, PALETTE_NAME, HEXCODE1, HEXCODE2, 
+    $sql = "INSERT INTO palette (USER_ID, PALETTE_NAME, HEXCODE1, HEXCODE2, 
     HEXCODE3, HEXCODE4, HEXCODE5, DATE_CREATED, NUM_VIEWS) VALUES ('" . $userID . "', '"
     . $paletteName . "', '" . $hex1 . "', '" . $hex2 . "', '" . $hex3 . "', '" . $hex4 . 
     "', '" . $hex5 . "', now(), '0')";
