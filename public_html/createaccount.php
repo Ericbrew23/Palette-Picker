@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="styles.css"/>
 <head>
     <title>
-        LOGIN
+        Create Account
     </title>
 </head>
 <body>
@@ -26,20 +26,22 @@
         <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br>
         <label for="password"><b>Password: </b></label>
         <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
-        <label for="confirmpass"><b>Confirm Password: </b></label>
-        <input type="confirmpassword" name="confirmpassword" id="confirmpassword" required minlength="1" maxlength="16"><br>
+        <label for="confirmpass" style="position: relative; ;right: 32px;"><b>Confirm Password: </b></label>
+        <input style="position: relative; right: 30px;" type="confirmpassword" name="confirmpassword" id="confirmpassword" required minlength="1" maxlength="16"><br>
         <button type="submit" href="homePageLoggedIn.html">Create Account</button>
     </form>
       <?php
         require("./dbConnection.php");
-        $doesUserExist = verifyUser($_POST['username'], $_POST['password']);
+        $doesUserExist = verifyUsernameNotTaken($_POST['username']);
+        
         
         if($doesUserExist){
-          header("Location: ./homePageLoggedIn.html");
+          sendNewUserToDb($_POST['username'],$_POST['password']);
+          echo "User Successfully Created";
           exit;
         }
         else
-          echo "Username or password is incorrect.";
+          echo "Username is already taken.";
       ?>
     </div>
 </body>
