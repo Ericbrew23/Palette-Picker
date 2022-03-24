@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<link rel="stylesheet" href="styles.css"/>
+<head>
+    <title>
+        Create Account
+    </title>
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">(Home)</a></li>
+      </ul>
+    <div id="rainbowImg">
+        <img
+          src="images/RainbowHeader.png"
+          alt="A rainbow gradient with 
+          black stripes."
+        />
+       
+      </div>
+    <div class="credentials" id="credentials">
+        <h1>Create new account</h1>
+    <form method="POST">
+        <label for="username"><b>Username: </b></label>
+        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br>
+        <label for="password"><b>Password: </b></label>
+        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
+        <label for="confirmpass" style="position: relative; ;right: 32px;"><b>Confirm Password: </b></label>
+        <input style="position: relative; right: 30px;" type="confirmpassword" name="confirmpassword" id="confirmpassword" required minlength="1" maxlength="16"><br>
+        <button type="submit" href="homePageLoggedIn.html">Create Account</button>
+    </form>
+      <?php
+        require("./dbConnection.php");
+        $doesUserExist = verifyUsernameNotTaken($_POST['username']);
+        
+        
+        if($doesUserExist){
+          sendNewUserToDb($_POST['username'],$_POST['password']);
+          echo "User Successfully Created";
+          exit;
+        }
+        else
+          echo "Username is already taken.";
+      ?>
+    </div>
+</body>
+</html>
