@@ -27,15 +27,18 @@
         <label for="password"><b>Password: </b></label>
         <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
         <label for="confirmpass" style="position: relative; ;right: 32px;"><b>Confirm Password: </b></label>
-        <input style="position: relative; right: 30px;" type="confirmpassword" name="confirmpassword" id="confirmpassword" required minlength="1" maxlength="16"><br>
+        <input style="position: relative; right: 30px;" type="password" name="confirmPassword" id="confirmPassword" required minlength="1" maxlength="16"><br>
         <button type="submit" href="homePageLoggedIn.html">Create Account</button>
     </form>
       <?php
         require("./dbConnection.php");
         $doesUserExist = verifyUsernameNotTaken($_POST['username']);
-        
-        
-        if($doesUserExist){
+        if($_POST['password'] != $_POST['confirmPassword'])
+        {
+            echo "Passwords do not match";
+            exit;
+        }
+        else if($doesUserExist){
           sendNewUserToDb($_POST['username'],$_POST['password']);
           echo "User Successfully Created";
           exit;
