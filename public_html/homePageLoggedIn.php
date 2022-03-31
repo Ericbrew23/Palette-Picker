@@ -6,8 +6,15 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <?php
+    //$user = $_GET['username'];
+    $user = $_GET['user'];
+    //echo "username = " . $user;
+    ?>
+    
     <ul>
-      <li><a href="homePageLoggedIn.html">(LogginHP)</a></li>
+      <li><p id="list">Welcome, <?php echo $user ?></p></li>
+      <!--<li><a href="homePageLoggedIn.html">(LogginHP)</a></li>-->
     </ul>
 
     <img

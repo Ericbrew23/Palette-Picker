@@ -8,12 +8,17 @@ ul {
 li {
   display: inline;
   float: left;
+  padding:14px 12px;
+  margin:0;
 }
 li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+}
+li p{
+  margin:0;
+  color: white;
 }
 
 img {
