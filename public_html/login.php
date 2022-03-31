@@ -23,9 +23,9 @@
         <h1>LOGIN</h1>
     <form method="POST">
         <label for="username"><b>Username: </b></label>
-        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br>
+        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br><br>
         <label for="password"><b>Password: </b></label>
-        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
+        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br><br>
         <button name="submit" type="submit" action="login.php">LOGIN</button>
     </form>
 
