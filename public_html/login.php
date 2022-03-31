@@ -23,22 +23,29 @@
         <h1>LOGIN</h1>
     <form method="POST">
         <label for="username"><b>Username: </b></label>
-        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br>
+        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br><br>
         <label for="password"><b>Password: </b></label>
-        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
-        <button type="submit" href="homePageLoggedIn.html">LOGIN</button>
+        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br><br>
+        <button name="submit" type="submit" action="login.php">LOGIN</button>
     </form>
+
       <?php
+      if(isset($_POST['submit'])){
         require("./dbConnection.php");
-        $doesUserExist = verifyUser($_POST['username'], $_POST['password']);
+        $username =$_POST['username'];
+        $doesUserExist = verifyUser($username, $_POST['password']);
         
         if($doesUserExist){
-          header("Location: ./homePageLoggedIn.html");
+          // echo"User exists";  
+
+          header("Location: homePageLoggedIn.php?user=$username");
           exit;
         }
         else
           echo "Username or password is incorrect.";
+      }
       ?>
     </div>
 </body>
 </html>
+
