@@ -75,9 +75,33 @@ function getUserSavedPaletteIDs($userID){
 function getPaletteInfo($paletteID){
     $sql = "SELECT PALETTE_NAME, USER_NAME, HEXCODE1, HEXCODE2, HEXCODE3, 
     HEXCODE4, HEXCODE5 FROM (palette INNER JOIN user ON palette.USER_ID =
-    user.USER_ID";
+    user.USER_ID)";
     return getFromDB($sql);
 }
+
+//functions specifically to get search information:
+    function findPaletteByColor($searchString){
+        $sql = "SELECT PALETTE_ID FROM palette 
+        WHERE HEXCODE1 = '" . $searchString . "'
+        OR HEXCODE2 = '" . $searchString . "'
+        OR HEXCODE3 = '" . $searchString . "'
+        OR HEXCODE4 = '" . $searchString . "'
+        OR HEXCODE5 = '" . $searchString . "'";
+        return getFromDB($sql);
+    }
+
+    function findPaletteByCreatorUsername($searchString){
+        $sql = "SELECT PALETTE_ID FROM (palette INNER JOIN user 
+        ON palette.USER_ID = user.USER_ID) 
+        WHERE USER_NAME = '" . $searchString . "'";
+        return getFromDB($sql);
+    }
+
+    function findPaletteByTitle($searchString){
+        $sql = "SELECT PALETTE_ID FROM palette WHERE 
+        PALETTE_NAME = '" . $searchString . "'";
+        return getFromDB($sql);
+    }
 
 //insert data functions:
 
