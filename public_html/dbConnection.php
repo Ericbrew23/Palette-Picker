@@ -79,14 +79,15 @@ function getPaletteInfo($paletteID){
     return getFromDB($sql);
 }
 
-//functions specifically to get search information:
+//functions specifically to get search information results:
     function findPaletteByColor($searchString){
+        //assumes $searchString has been converted to a number
         $sql = "SELECT PALETTE_ID FROM palette 
-        WHERE HEXCODE1 = '" . $searchString . "'
-        OR HEXCODE2 = '" . $searchString . "'
-        OR HEXCODE3 = '" . $searchString . "'
-        OR HEXCODE4 = '" . $searchString . "'
-        OR HEXCODE5 = '" . $searchString . "'";
+        WHERE HEXCODE1 = " . $searchString . "
+        OR HEXCODE2 = " . $searchString . "
+        OR HEXCODE3 = " . $searchString . "
+        OR HEXCODE4 = " . $searchString . "
+        OR HEXCODE5 = " . $searchString;
         return getFromDB($sql);
     }
 
