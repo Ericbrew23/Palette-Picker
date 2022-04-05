@@ -34,7 +34,7 @@ function sendToDB($sql){
 //verification functions:
 
 function verifyUser($username, $password){
-    $sql = "SELECT COUNT(*) AS TOTAL FROM USER WHERE USER_NAME = '" . $username . "' AND 
+    $sql = "SELECT COUNT(*) AS TOTAL FROM user WHERE USER_NAME = '" . $username . "' AND 
     USER_PASSWORD = '" . $password . "'";
     $result = getFromDB($sql);
     $data = mysqli_fetch_assoc($result);    
@@ -47,7 +47,7 @@ function verifyUser($username, $password){
 }
 
 function verifyUsernameNotTaken($username){
-    $sql = "SELECT COUNT(*) AS TOTAL FROM USER WHERE USER_NAME = '" . $username . "'";
+    $sql = "SELECT COUNT(*) AS TOTAL FROM user WHERE USER_NAME = '" . $username . "'";
     $result = getFromDB($sql);
     $data = mysqli_fetch_assoc($result);
 
@@ -58,17 +58,24 @@ function verifyUsernameNotTaken($username){
 //select data functions:
 
 function getUserID($username){
-    $sql = "SELECT USER_ID FROM USER WHERE USER_NAME = '" . $username . "'";
+    $sql = "SELECT USER_ID FROM user WHERE USER_NAME = '" . $username . "'";
     return getFromDB($sql);
 }
 
 function getUserFriends($id){
-    $sql = "SELECT FRIEND_ID FROM FRIEND WHERE USER_ID = " . $id;
+    $sql = "SELECT FRIEND_ID FROM friend WHERE USER_ID = " . $id;
     return getFromDB($sql);
 }
 
 function getUserSavedPaletteIDs($userID){
-    $sql = "SELECT PALETTE_ID FROM SAVED_PALETTE WHERE USER_ID = " . $userID;
+    $sql = "SELECT PALETTE_ID FROM saved_palette WHERE USER_ID = " . $userID;
+    return getFromDB($sql);
+}
+
+function getPaletteInfo($paletteID){
+    $sql = "SELECT PALETTE_NAME, USER_NAME, HEXCODE1, HEXCODE2, HEXCODE3, 
+    HEXCODE4, HEXCODE5 FROM (palette INNER JOIN user ON palette.USER_ID =
+    user.USER_ID";
     return getFromDB($sql);
 }
 
