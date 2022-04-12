@@ -23,11 +23,11 @@
         <h1>Create new account</h1>
     <form method="POST">
         <label for="username"><b>Username: </b></label>
-        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br>
+        <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br><br>
         <label for="password"><b>Password: </b></label>
-        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br>
+        <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br><br>
         <label for="confirmpass" style="position: relative; ;right: 32px;"><b>Confirm Password: </b></label>
-        <input style="position: relative; right: 30px;" type="password" name="confirmPassword" id="confirmPassword" required minlength="1" maxlength="16"><br>
+        <input style="position: relative; right: 30px;" type="password" name="confirmPassword" id="confirmPassword" required minlength="1" maxlength="16"><br><br>
         <button type="submit" href="homePageLoggedIn.html">Create Account</button>
     </form>
       <?php
