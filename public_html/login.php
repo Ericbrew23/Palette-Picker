@@ -11,8 +11,8 @@
     <ul>
         <li><a href="index.html">(Home)</a></li>
       </ul>
-    <div id="rainbowImg">
-        <img
+    <div id="imgHolder">
+        <img id="rainbowImg"
           src="images/RainbowHeader.png"
           alt="A rainbow gradient with 
           black stripes."

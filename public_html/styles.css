@@ -1,3 +1,4 @@
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -20,11 +21,16 @@ li p{
   margin:0;
   color: white;
 }
-
-img {
-  width: 100%;
+#imgHolder{
   border: 5px solid #333;
   border-radius: 2px;
+  background-color: #333;
+}
+#rainbowImg {
+  object-fit: fill;
+  max-width: 100%;
+  height:auto;
+  
 }
 
 button {

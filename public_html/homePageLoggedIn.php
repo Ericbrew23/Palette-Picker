@@ -17,11 +17,13 @@
       <!--<li><a href="homePageLoggedIn.html">(LogginHP)</a></li>-->
     </ul>
 
-    <img
+    <div id="imgHolder">
+    <img id="rainbowImg"
       src="images/RainbowHeader.png"
       alt="A rainbow gradient with 
         black stripes."
     />
+    </div>
 
     <div id="L_PCButton">
       <button type="button">Go to Palette Creator</button>
