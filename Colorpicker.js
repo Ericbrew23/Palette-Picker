@@ -67,29 +67,19 @@ function averageColor() {
     imgData = context.getImageData(0, 0, width, height);
 
 
-    let midheight = Math.ceil(height / 2);
-    let midwidth = Math.ceil(width / 2);
     rgb0 = findPartition(imgData, 0, 0, height, width, width);
+    rgb1 = findPartition(imgData, 0, 0, height / 2, width / 2 , width);
+    rgb2 = findPartition(imgData, 0, width / 2, height / 2, width,width);
+    rgb3 = findPartition(imgData, height / 2, 0, height, width / 2,width);
+    rgb4 = findPartition(imgData, height / 2, width / 2, height, width,width);
 
-    console.log("!!!First Partition (top left)!!!-------------------------------------------");
-    rgb1 = findPartition(imgData, 0, 0, midheight, midwidth, width);
-
-    console.log("!!!Second Partition (top right)!!!-------------------------------------------");
-    rgb2 = findPartition(imgData, 0, midwidth, midheight, width, width);
-
-    console.log("!!!Third Partition (bottom left)!!!-------------------------------------------");
-    rgb3 = findPartition(imgData, midheight, 0, height, midwidth, width);
-
-    console.log("!!!Fourth Partition (bottom right)!!!-------------------------------------------");
-    rgb4 = findPartition(imgData, midheight, midwidth, height, width, width);
-
-
+    
 
 
 
     // Get the length of image data object
-
-
+   
+    
     var colors = [];
     colors.push(rgb0);
     colors.push(rgb1);
@@ -102,18 +92,15 @@ function averageColor() {
 
 }
 
-function findPartition(imgData, startheight, startwidth, endheight, endwidth, imgwidth) {
+function findPartition(imgData, startheight, startwidth, endheight, endwidth,imgwidth) {
     rgb = { r: 0, g: 0, b: 0 };
     count = 0;
+   
+    for (var i = startwidth ; i < endwidth ; i += 4) {
 
-    for (var i = startheight; i < endheight; i += 4) {
-
-        for (var j = startwidth; j < endwidth; j += 4) {
-
-            let index = j + (i * (imgwidth) * 4);
+        for (var j = startheight ; j < endheight ; j += 4) {
             
-
-
+            let index = i + (j*imgwidth);
             // Sum total for each colour
             rgb.r += imgData.data[index];
 
@@ -122,8 +109,6 @@ function findPartition(imgData, startheight, startwidth, endheight, endwidth, im
             rgb.b += imgData.data[index + 2];
 
             count++;
-
-
         }
     }
 
@@ -143,7 +128,18 @@ function findPartition(imgData, startheight, startwidth, endheight, endwidth, im
 
 }
 
+function checkIncludes(color1, color2) {
 
+    if (color1.r == color2.r &&
+        color1.g == color2.g &&
+        color1.b == color2.b) {
+
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 
 
@@ -161,40 +157,15 @@ function setColors() {
 
     // Select the element and set its
     // background color
-
-    for (var i = 0; i < rgb.length; i++) {
-        var readint = [rgb[i].r.toString(16), rgb[i].g.toString(16), rgb[i].b.toString(16)];
-        document
-            .getElementById("block" + i)
-            .style.backgroundColor =
-            'rgb(' + rgb[i].r + ','
-            + rgb[i].g + ','
-            + rgb[i].b + ')';
-
-
-        for (let j = 0; j < readint.length; j++) {
-
-            if (readint[j].length < 2) {
-                readint[j] = "0" + readint[j];
-            }
-
-        }
-
-        let saturated = Boolean(((rgb[i].r > 200) || (rgb[i].g > 200) || (rgb[i].b > 200))
-            && !((rgb[i].r > 200) && (rgb[i].g > 200)) && !((rgb[i].b > 200) && (rgb[i].g > 200)));
-
-        console.log("Bool?:" + saturated);
-
-        if (rgb[i].r + rgb[i].g + rgb[i].b <= 385 || saturated) {
-            document.getElementById("title" + i).style = "color:white;"
-        }
-        else {
-            document.getElementById("title" + i).style = "color:black;"
-        }
-        document
-            .getElementById("title" + i)
-            .innerHTML = "#" + readint[0] + readint[1] + readint[2];
-
+    console.log(rgb.length);
+    console.log(rgb)
+    for (var i =0; i<rgb.length; i++){
+    document
+        .getElementById("block" + i)
+        .style.backgroundColor =
+        'rgb(' + rgb[i].r + ','
+        + rgb[i].g + ','
+        + rgb[i].b + ')';
     }
 
 }
