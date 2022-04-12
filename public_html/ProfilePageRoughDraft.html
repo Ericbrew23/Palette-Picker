@@ -3,12 +3,13 @@
 <head>
   
     <div class="topnav">
-        <input type="text" placeholder="Search..">
-        <a class="active" href="#home">Alerts</a>
-        <a class="active" href=#profile>Profile</a>
-        </p>
+      <ul>
+        <li><input type="text" placeholder="Search.."></li>
+        <li><a class="active" href="#home">Alerts</a></li>
+        <li><a class="active" href=#profile>Profile</a></li>
+      </ul>
       </div>
-    <div class="header" id="imgHolder">
+    <div class="header">
       <img id="rainbowImg"
       src="images/RainbowHeader.png"
       alt="A rainbow gradient with 
@@ -52,13 +53,43 @@
 </html>
 
 <style> 
+* { padding: 0; margin: 0;}
+.topnav {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  display: inline;
+  float: left;
+  padding:14px 12px;
+  margin:0;
+  
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+}
+#rainbowImg {
+  object-fit: fill;
+  max-width: 100%;
+  height:auto;  
+}
     .header {
+      border: 5px solid #333;
+  background-color: #333;
+  margin: 0;
+  /*
      width: 100%;
      text-align: center;
 
      background: "images/RainbowHeader.png"; 
      color: white;
-     font-size: 30px;
+     font-size: 30px;*/
    }
    .boxed {
    border: 1px solid black ;

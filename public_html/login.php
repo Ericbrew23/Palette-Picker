@@ -9,7 +9,7 @@
 </head>
 <body>
     <ul>
-        <li><a href="index.html">(Home)</a></li>
+        <li><a href="index.html">Home</a></li>
       </ul>
     <div id="imgHolder">
         <img id="rainbowImg"
