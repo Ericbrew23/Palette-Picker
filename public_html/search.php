@@ -27,15 +27,17 @@
         require("./dbConnection.php");
         $search =$_POST['search'];
 
+        $hex1; $hex2; $hex3; $hex4; $hex5;
+
         $result = findPaletteByTitle($search);
 
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()){ 
-            $hex1 = $row["HEXCODE1"];
-            $hex2 = $row["HEXCODE2"];
-            $hex3 = $row["HEXCODE3"];
-            $hex4 = $row["HEXCODE4"];
-            $hex5 = $row["HEXCODE5"];
+            $hex1 = dechex($row["HEXCODE1"]);
+            $hex2 = dechex($row["HEXCODE2"]);
+            $hex3 = dechex($row["HEXCODE3"]);
+            $hex4 = dechex($row["HEXCODE4"]);
+            $hex5 = dechex($row["HEXCODE5"]);
           }
         }  else
         echo "No results";

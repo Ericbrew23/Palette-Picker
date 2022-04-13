@@ -98,7 +98,7 @@ function getPaletteInfo($paletteID){
     }
 
     function findPaletteByTitle($searchString){
-        $sql = "SELECT PALETTE_ID FROM palette WHERE 
+        $sql = "SELECT PALETTE_ID, HEXCODE1, HEXCODE2, HEXCODE3, HEXCODE4, HEXCODE5 FROM palette WHERE 
         PALETTE_NAME = '" . $searchString . "'";
         return getFromDB($sql);
     }
