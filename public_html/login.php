@@ -26,7 +26,7 @@
         <input type="text" name="username" id="username" required minlength="1" maxlength="250"><br><br>
         <label for="password"><b>Password: </b></label>
         <input style="position: relative; left: 2px;" type="password" name="password" id="password" required minlength="1" maxlength="16"><br><br>
-        <button name="submit" type="submit" action="login.php">LOGIN</button>
+        <button name="submit" type="submit">LOGIN</button>
     </form>
 
       <?php
