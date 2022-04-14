@@ -45,13 +45,47 @@
 
   ?>
 
+
+
 <div id="result1" name="result1">
-  <canvas id="Colour1" width="100" Height="200">
+  <canvas id="Colour1" width="50" Height="100">
         <script>
             var c = document.getElementById("Colour1");
             var ctx = c.getContext("2d");
-            ctx.fillStyle = "<?php echo $hex1 ?>";
-            ctx.fillRect(10, 10, 150, 80);
+            ctx.fillStyle = "#<?php echo $hex1 ?>";
+            ctx.fillRect(10, 10, 50, 80);
+        </script>
+    </canvas>
+    <canvas id="Colour2" width="50" Height="100">
+        <script>
+            var c = document.getElementById("Colour2");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#<?php echo $hex2 ?>";
+            ctx.fillRect(10, 10, 50, 80);
+        </script>
+    </canvas>
+    <canvas id="Colour3" width="50" Height="100">
+        <script>
+            var c = document.getElementById("Colour3");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#<?php echo $hex3 ?>";
+            ctx.fillRect(10, 10, 50, 80);
+        </script>
+    </canvas>
+    <canvas id="Colour4" width="50" Height="100">
+        <script>
+            var c = document.getElementById("Colour4");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#<?php echo $hex4 ?>";
+            ctx.fillRect(10, 10, 50, 80);
+        </script>
+    </canvas>
+    <canvas id="Colour5" width="50" Height="100">
+        <script>
+            var c = document.getElementById("Colour5");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#<?php echo $hex5 ?>";
+            ctx.fillRect(10, 10, 50, 80);
         </script>
     </canvas>
   </div>
