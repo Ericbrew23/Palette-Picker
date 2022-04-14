@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Palette Picker Home Page (Logged In)</title>
-    <meta charset="utf-a" />
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
