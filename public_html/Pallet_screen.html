@@ -1,87 +1,151 @@
-<title id='titlename' > :) </title>
+<title id='titlename'> :) </title>
 
-<div id="imgHolder">
-    <img id="rainbowImg"
-      src="images/RainbowHeader.png"
-      alt="A rainbow gradient with 
-      black stripes."
-    />
-   
-  </div>
+<head>
+    <style>
+        .slider {
+            -webkit-appearance: none;
+            width: 30%;
+            height: 15px;
+            border-radius: 5px;
+            background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(255, 255, 0), rgb(0, 255, 0), rgb(0, 255, 255), rgb(0, 0, 255), rgb(255, 0, 255), red);
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
 
-<canvas id="TopColour" Width="500" Height="250">
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: currentcolor;
+            cursor: pointer;
+        }
+
+        #block0 {
+            position: absolute;
+            background-color: rgb(38, 0, 255);
+            height: 70px;
+            width: 70px;
+            left: 10%;
+            top: 50%;
+        }
+
+        #title0 {
+            pointer-events: none;
+        }
+
+        #block1 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 20%;
+            top: 50%;
+        }
+
+        #title1 {
+            pointer-events: none;
+        }
+
+        #block2 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 30%;
+            top: 50%;
+        }
+
+        #title2 {
+            pointer-events: none;
+        }
+
+        #block3 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 40%;
+            top: 50%;
+        }
+
+        #title3 {
+            pointer-events: none;
+        }
+
+        #block4 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 50%;
+            top: 50%;
+        }
+
+        #title4 {
+            pointer-events: none;
+        }
+    </style>
+
+</head>
+
+
+<div id="rainbowImg">
+    <img src="images/RainbowHeader.png" alt="A rainbow gradient with 
+      black stripes." />
+
+</div>
+
+<canvas id="TopColour" Width="500" Height="250" onclick="setColorBox(event);">
     <script>
         var c = document.getElementById("TopColour");
         var ctx = c.getContext('2d');
-        var imageData= ctx.createImageData(500,250);
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            // Percentage in the x direction, times 255
-            let x = (i % 2000) / 2000 * 255;
-            // Percentage in the y direction, times 255
-            let y = Math.ceil(i / 1000) / 250 * 255;
+        var imageData = ctx.createImageData(500, 250);
 
-            // Modify pixel data
-            imageData.data[i + 0] = x;        // R value
-            imageData.data[i + 1] = y;        // G value
-            imageData.data[i + 2] = 255 - x;  // B value
-            imageData.data[i + 3] = 255;      // A value
+        for (let i = 0; i < 250; i ++) {
+            for (let j = 0; j < 2000; j +=4) {
+                let index = j + (i * 2000)
+
+                let dom = 255-(Math.floor(255*i /250))
+            
+                let sub = 255-(Math.floor(255*j/2000))-(Math.floor(255*i /250))
+
+                // Modify pixel data
+                imageData.data[index + 0] = dom;        // R value
+                imageData.data[index + 1] = sub;        // G value
+                imageData.data[index + 2] = sub;        // B value
+                imageData.data[index + 3] = 255;      // A value
+            }
         }
 
         // Draw image data to the canvas
         ctx.putImageData(imageData, 20, 20);
     </script>
 </canvas>
-
-
+<input type="range" min="1" max="1530" value="1" oninput="updateGradient(event);" class="slider" id="myRange">
+<script src="manual_code.js"></script>
 
 <div id="Colour blocks">
-    <canvas id="Colour1" width="100" Height="200">
-        <script>
-            var c = document.getElementById("Colour1");
-            var ctx = c.getContext("2d");
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(10, 10, 150, 80);
-        </script>
-    </canvas>
-
-    <canvas id="Colour2" width="100" Height="200">
-        <script>
-            var c = document.getElementById("Colour2");
-            var ctx = c.getContext("2d");
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(10, 10, 150, 80);
-        </script>
-    </canvas>
-
-    <canvas id="Colour3" width="100" Height="200">
-        <script>
-            var c = document.getElementById("Colour3");
-            var ctx = c.getContext("2d");
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(10, 10, 150, 80);
-        </script>
-    </canvas>
-
-    <canvas id="Colour4" width="100" Height="200">
-        <script>
-            var c = document.getElementById("Colour4");
-            var ctx = c.getContext("2d");
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(10, 10, 150, 80);
-        </script>
-    </canvas>
-
-    <canvas id="Colour5" width="100" Height="200">
-        <script>
-            var c = document.getElementById("Colour5");
-            var ctx = c.getContext("2d");
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(10, 10, 150, 80);
-        </script>
-    </canvas>
+    <div id="block0" onclick="setSelected(event);">
+        <p id="title0" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+    </div>
+    <div id="block1" onclick="setSelected(event);">
+        <p id="title1" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+    </div>
+    <div id="block2" onclick="setSelected(event);">
+        <p id="title2" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+    </div>
+    <div id="block3" onclick="setSelected(event);">
+        <p id="title3" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+    </div>
+    <div id="block4" onclick="setSelected(event);">
+        <p id="title4" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+    </div>
 </div>
 
-<button name="Refresh_Button">Refresh</button>
+<button name="Refresh_Button" onClick="resetColor();">Refresh</button>
 
 
 <button name="Save_Button"">Finish</button>
