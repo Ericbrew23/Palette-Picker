@@ -129,4 +129,11 @@ function getUserHashedPasswordFromDB($searchString)
     
 }
 
+// save data
+function savePaletteForUser($userID, $paletteID){
+    $sql = "INSERT INTO saved_palette (USER_ID, PALETTE_ID) VALUES 
+    ('" . $userID . "', '" . $paletteID . "')";
+    return sendToDB($sql);
+}
+
 ?>
