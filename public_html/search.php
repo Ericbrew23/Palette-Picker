@@ -63,6 +63,14 @@
       <li><a class="active" href="index.html">Home</a></li>
       <form method="POST">
       <li><input name="search" type="text" placeholder="Search.."></li>
+      <li>
+        <select name="searchType" id="searchType">
+          <option value="title">Title</option>
+          <option value="color">Color</option>
+          <option value="creator">Creator</option>
+      </select>
+
+      </li>
       <li><input type="submit" name="submit"></li>
 </form>
     </ul>
