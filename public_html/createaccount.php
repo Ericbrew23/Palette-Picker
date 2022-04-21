@@ -35,13 +35,14 @@
       {
         require("./dbConnection.php");
         $userDoesNotExist = verifyUsernameNotTaken($_POST['username']);
+        $encryptedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT);
         if($_POST['password'] != $_POST['confirmPassword'])
         {
             echo "Passwords do not match";
             exit;
         }
         else if($userDoesNotExist){
-          sendNewUserToDb($_POST['username'],$_POST['password']);
+          sendNewUserToDb($_POST['username'],$encryptedPassword);
           echo "User Successfully Created";
           exit;
         }

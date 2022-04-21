@@ -33,16 +33,22 @@
       if(isset($_POST['submit'])){
         require("./dbConnection.php");
         $username =$_POST['username'];
-        $doesUserExist = verifyUser($username, $_POST['password']);
+        $password = $_POST['password'];
+        $sql_Password = getUserHashedPasswordFromDB($username);
+        $sql_Password = $sql_Password->fetch_row()[0];
+        $verifiedHash = password_verify($password,$sql_Password);
+        $doesUserExist = verifyUser($username, $sql_Password);
         
-        if($doesUserExist){
-          // echo"User exists";  
+        if($doesUserExist && $verifiedHash){
+           echo"User exists";  
 
           header("Location: homePageLoggedIn.php?user=$username");
           exit;
         }
+      
         else
           echo "Username or password is incorrect.";
+          
       }
       ?>
     </div>
