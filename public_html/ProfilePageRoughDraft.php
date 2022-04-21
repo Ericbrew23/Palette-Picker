@@ -16,9 +16,11 @@
         black stripes."
     />
     </div>
-    
-  
-<title>Profile</title>
+    <?php
+    $user = $_GET['username'];
+    //echo "username = " . $user;
+    ?>  
+<title><?php echo $user ?></title>
 </head>
 <body>
 <h1>Saved Palettes:</h1>

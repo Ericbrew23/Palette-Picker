@@ -121,4 +121,12 @@ function sendNewPaletteToDb($userID, $paletteName, $hex1, $hex2, $hex3, $hex4, $
     return sendToDB($sql);
 }
 
+function getUserHashedPasswordFromDB($searchString)
+{
+    $sql = "SELECT USER_PASSWORD FROM user WHERE
+            USER_NAME = '" . $searchString . "'";
+            return getFromDB($sql);
+    
+}
+
 ?>
