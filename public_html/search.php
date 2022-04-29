@@ -98,7 +98,7 @@
             getRectangle("' . $id . '", "' . $hex1 . '", "' . $hex2 . '", "'
             . $hex3 . '", "' . $hex4 . '", "' . $hex5 . '");</script>';
 
-            echo '<script>alert("' .  $hex1  . '");</script>';
+            //echo '<script>alert("' .  $hex1  . '");</script>';
             
             //$row = $result->fetch_assoc();
             /*
