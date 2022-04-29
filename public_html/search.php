@@ -6,56 +6,47 @@
     <link rel="stylesheet" href="styles.css" />
 
     <script>
-      let resultNum=1;
-
+      
       function getColors(hexnum, element){
         var c = document.getElementById(element);
         var ctx = c.getContext("2d");
         ctx.fillStyle = `#${hexnum}`;
-        ctx.fillRect(10, 10, 50, 80);
+        ctx.fillRect(2, 2, c.width, c.height);
       }
-      /*
-      function getCanvas(resElem){
-        resultNum++;
-        document.getElementById(resElem).innerHTML = 
-        `<canvas id="${resElem}-Colour1" width="50" Height="100">
-                getColors("<?php echo $hex1 ?>", "${resElem}-Colour1");
-        </canvas>
-        <canvas id="${resElem}-Colour2" width="50" Height="100">
-                getColors("<?php echo $hex2 ?>", "${resElem}-Colour2");
-        </canvas>
-        <canvas id="${resElem}-Colour3" width="50" Height="100">
-            getColors("<?php echo $hex3 ?>", "${resElem}-Colour3");
-        </canvas>
-        <canvas id="${resElem}-Colour4" width="50" Height="100">
-              getColors("<?php echo $hex4 ?>", "${resElem}-Colour4");
-        </canvas>
-        <canvas id="${resElem}-Colour5" width="50" Height="100">
-              getColors("<?php echo $hex5 ?>", "${resElem}-Colour5");
-        </canvas>`
-      }
-      */
-      /*
-      function getColors(hexnum, index){
-        alert("here2");
-        var c = document.getElementById("Colour" + index);
-        var ctx = c.getContext("2d");
-        ctx.fillStyle = `#${hexnum}`;
-        ctx.fillRect(10, 10, 50, 80);;
-      }
+      
       function getCanvas(id, hex1, hex2, hex3, hex4, hex5){
-        alert("hh");
-        let colornum = 1;
-        let result = `<div id="result${resultNum}">\n<canvas id="Colour${colornum}" width="50" Height="100">`;
+        //alert("hh");
+        //let colornum = 1;
+        let result = `<div id="result${id}">`;
 
-        result+= getColors(hex1, colornum);
-        colornum++;
+        for(let i = 1; i <= 5; i++){
+          //let color = ("hex" + colornum);
+          result +=`<canvas id="Colour${id}-${i}" width="50" Height="100">`;
+          //result += getColors(color) + `>`;
+          //document.getElementById("Colour" + colornum).style.
+          result += '</canvas>';
+          //colornum++;
+        }
 
-        result+="</canvas></div>";
+        result+="</div>";
+        //alert(result);
 
-        document.getElementById("results").innerhtml = result;
-        resultNum++;
+        document.getElementById("results").innerHTML = result;
+
+        getColors(hex1, `Colour${id}-1`);
+        getColors(hex2, `Colour${id}-2`);
+        getColors(hex3, `Colour${id}-3`);
+        getColors(hex4, `Colour${id}-4`);
+        getColors(hex5, `Colour${id}-5`);
+        /*
+        document.getElementById(`Colour${id}-1`).style.color = `#${hex1}`;
+        document.getElementById(`Colour${id}-2`).style.color = `#${hex2}`;
+        document.getElementById(`Colour${id}-3`).style.color = `#${hex3}`;
+        document.getElementById(`Colour${id}-4`).style.color = `#${hex4}`;
+        document.getElementById(`Colour${id}-5`).style.color = `#${hex5}`;
         */
+      }
+        
     </script>
   </head>
   <body>
@@ -81,7 +72,9 @@
       alt="A rainbow gradient with 
         black stripes."
     />
-    </div>    
+    </div>  
+    
+    <div id="results"></div>
 
   <?php
       if(isset($_POST['submit'])){
@@ -103,18 +96,12 @@
             $hex4 = dechex($row["HEXCODE4"]);
             $hex5 = dechex($row["HEXCODE5"]);
 
-            //echo `<script> getCanvas("result" + <?php echo $index ;
+            echo '<script>
+            getCanvas("' . $id . '", "' . $hex1 . '", "' . $hex2 . '", "'
+            . $hex3 . '", "' . $hex4 . '", "' . $hex5 . '");</script>';
 
-
-            /*
-            echo `<script>
-            getColors("<?php echo $hex1 ?>", "Colour1");
-            getColors("<?php echo $hex2 ?>", "Colour2");
-            getColors("<?php echo $hex3 ?>", "Colour3");
-            getColors("<?php echo $hex4 ?>", "Colour4");
-            getColors("<?php echo $hex5 ?>", "Colour5");
-            </script>`;
-            */
+            echo '<script>alert("' .  $hex1  . '");</script>';
+            
             //$row = $result->fetch_assoc();
             /*
             echo `<script type="text/javascript">getCanvas("' . $id . '", 
@@ -129,7 +116,7 @@
   ?>
 
 
-
+<!--
 <div id="result1" name="result1">
   <canvas id="Colour1" width="50" Height="100">
   <script>
@@ -157,7 +144,7 @@
         </script>
     </canvas>
   </div>
-  
+    -->
 
     <!--
   <div id="result2"></div>
