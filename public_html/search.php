@@ -14,37 +14,35 @@
         ctx.fillRect(2, 2, c.width, c.height);
       }
       
-      function getCanvas(id, hex1, hex2, hex3, hex4, hex5){
+      function getRectangle(id, hex1, hex2, hex3, hex4, hex5){
         //alert("hh");
         //let colornum = 1;
-        let result = `<div id="result${id}">`;
+        let result = document.getElementById("results").innerHTML + 
+        `<div id="result${id}" style="float:left; padding: 50px;">`;
 
-        for(let i = 1; i <= 5; i++){
-          //let color = ("hex" + colornum);
-          result +=`<canvas id="Colour${id}-${i}" width="50" Height="100">`;
-          //result += getColors(color) + `>`;
-          //document.getElementById("Colour" + colornum).style.
-          result += '</canvas>';
-          //colornum++;
-        }
+        result +=`<div id="Colour${id}-1" 
+        style="width:50px; height:100px;float:left; 
+        background-color:#${hex1};"></div>`;
+        result +=`<div id="Colour${id}-2" 
+        style="width:50px; height:100px; float:left;
+        background-color:#${hex2};"></div>`;
+        result +=`<div id="Colour${id}-3" 
+        style="width:50px; height:100px; float:left;
+        background-color:#${hex3};"></div>`;
+        result +=`<div id="Colour${id}-4" 
+        style="width:50px; height:100px; float:left;
+        background-color:#${hex4};"></div>`;
+        result +=`<div id="Colour${id}-5" 
+        style="width:50px; height:100px; float:left;
+        background-color:#${hex5};"></div>`;
+        
 
         result+="</div>";
         //alert(result);
 
         document.getElementById("results").innerHTML = result;
 
-        getColors(hex1, `Colour${id}-1`);
-        getColors(hex2, `Colour${id}-2`);
-        getColors(hex3, `Colour${id}-3`);
-        getColors(hex4, `Colour${id}-4`);
-        getColors(hex5, `Colour${id}-5`);
-        /*
-        document.getElementById(`Colour${id}-1`).style.color = `#${hex1}`;
-        document.getElementById(`Colour${id}-2`).style.color = `#${hex2}`;
-        document.getElementById(`Colour${id}-3`).style.color = `#${hex3}`;
-        document.getElementById(`Colour${id}-4`).style.color = `#${hex4}`;
-        document.getElementById(`Colour${id}-5`).style.color = `#${hex5}`;
-        */
+        
       }
         
     </script>
@@ -97,7 +95,7 @@
             $hex5 = dechex($row["HEXCODE5"]);
 
             echo '<script>
-            getCanvas("' . $id . '", "' . $hex1 . '", "' . $hex2 . '", "'
+            getRectangle("' . $id . '", "' . $hex1 . '", "' . $hex2 . '", "'
             . $hex3 . '", "' . $hex4 . '", "' . $hex5 . '");</script>';
 
             echo '<script>alert("' .  $hex1  . '");</script>';
