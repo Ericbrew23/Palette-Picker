@@ -75,7 +75,7 @@ function getUserSavedPaletteIDs($userID){
 function getPaletteInfo($paletteID){
     $sql = "SELECT PALETTE_NAME, USER_NAME, HEXCODE1, HEXCODE2, HEXCODE3, 
     HEXCODE4, HEXCODE5 FROM (palette INNER JOIN user ON palette.USER_ID =
-    user.USER_ID)";
+    user.USER_ID) WHERE PALETTE_ID = " . $paletteID;
     return getFromDB($sql);
 }
 

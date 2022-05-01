@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="styles.css" />
 
     <script>
+      function changeBorder(ele){
+        ele.style.border='3px solid';
+        ele.style.borderColor='black';
+      }
+
+      function goToLargePalettePage(id){
+        window.location.href=`LargePalettePage.php?id=${id}`;
+      }
       
       function getColors(hexnum, element){
         var c = document.getElementById(element);
@@ -16,9 +24,11 @@
       
       function getRectangle(id, hex1, hex2, hex3, hex4, hex5){
         //alert("hh");
-        //let colornum = 1;
+        //let colornum = 1; onmouseover="changeBorder(this)"
         let result = document.getElementById("results").innerHTML + 
-        `<div id="result${id}" style="float:left; padding: 50px;">`;
+        `<div id="result${id}" 
+        onclick="goToLargePalettePage(${id})"
+        style="float:left; padding: 50px;">`;
 
         result +=`<div id="Colour${id}-1" 
         style="width:50px; height:100px;float:left; 
