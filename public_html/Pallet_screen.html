@@ -1,5 +1,5 @@
-<title id='titlename'> :) </title>
-
+<title id='titlename'> Palette </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <head>
     <style>
         .slider {
@@ -87,6 +87,11 @@
         #title4 {
             pointer-events: none;
         }
+	  #rainbowImg {
+ 	   object-fit: fill;
+ 	   max-width: 100%;
+ 	   height:auto;  
+	  }
     </style>
 
 </head>
@@ -148,4 +153,4 @@
 <button name="Refresh_Button" onClick="resetColor();">Refresh</button>
 
 
-<button name="Save_Button"">Finish</button>
+<button name="Save_Button" onClick="save();">Finish</button>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <title>
+        From Image
+    </title>
+
+    <style>
+       #img{
+           height: 300px;
+           width: 500px;
+       }
+        
+
+        #block0 {
+            position: absolute;
+            background-color: rgb(38, 0, 255);
+            height: 70px;
+            width: 70px;
+            left: 50%;
+            top: 20%;
+        }
+
+        #block1 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 50%;
+            top: 30%;
+        }
+        #block2 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 50%;
+            top: 40%;
+        }
+        #block3 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 50%;
+            top: 50%;
+        }
+        #block4 {
+            position: absolute;
+            background-color: rgb(255, 0, 0);
+            height: 70px;
+            width: 70px;
+            left: 50%;
+            top: 60%;
+        }
+        
+        #canvas{
+            display:none;
+        }
+	  #rainbowImg {
+ 	   object-fit: fill;
+ 	   max-width: 100%;
+ 	   height:auto;  
+	  }
+
+        
+        
+    </style>
+
+</head>
+
+<div id="rainbowImg">
+    <img src="images/RainbowHeader.png" alt="A rainbow gradient with 
+      black stripes." />
+
+</div>
+
+
+<body>
+
+    <canvas id="canvas" "></canvas>
+    <img id="img" >
+    <div id="preview"></div>
+    <div id="block0">
+        <p id="title0"></p>
+    </div>
+    <div id="block1">
+        <p id="title1"></p>
+    </div>
+    <div id="block2">
+        <p id="title2"></p>
+    </div>
+    <div id="block3">
+        <p id="title3"></p>
+    </div>
+    <div id="block4">
+        <p id="title4"></p>
+    </div>
+    <div id = "buttons" >
+        <button id="button" style="position: absolute;"class= "buttons" onclick="openFile()">Open Image</button>
+        <button id="save" style="position: absolute; left:10%;" class= "buttons"  onclick="save()">Save</button>
+    </div>
+
+    
+    <script src="Colorpicker.js">
+        
+    </script>
+</body>
+
+</html>
