@@ -9,6 +9,7 @@
     </title>
 
     <style>
+        * { padding: 0; margin: 0;}
        #img{
            height: 300px;
            width: 500px;
@@ -60,6 +61,11 @@
         #canvas{
             display:none;
         }
+        #imgHolder{
+        border: 5px solid #333;
+        background-color: #333;
+        margin: 0;
+        }
 	  #rainbowImg {
  	   object-fit: fill;
  	   max-width: 100%;
@@ -71,17 +77,14 @@
     </style>
 
 </head>
-
-<div >
-    <img id="rainbowImg" src="images/RainbowHeader.png" alt="A rainbow gradient with 
-      black stripes." />
-
-</div>
-
-
 <body>
+    <div id="imgHolder">
+        <img id="rainbowImg" src="images/RainbowHeader.png" alt="A rainbow gradient with 
+          black stripes." />
+    
+    </div>
 
-    <canvas id="canvas" "></canvas>
+    <canvas id="canvas"></canvas>
     <img id="img" >
     <div id="preview"></div>
     <div id="block0">
@@ -100,7 +103,7 @@
         <p id="title4"></p>
     </div>
     <div id = "buttons" >
-        <button id="button" style="position: absolute;"class= "buttons" onclick="openFile()">Open Image</button>
+        <button id="button" style="position: absolute;" class="buttons" onclick="openFile()">Open Image</button>
         <button id="save" style="position: absolute; left:10%;" class= "buttons"  onclick="save()">Save</button>
         <a href="Pallet_screen.html" style="position: absolute; left:17%;"><button type="button">Create Manually</button></a> 
   
