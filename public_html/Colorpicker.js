@@ -111,7 +111,7 @@ function findPartition(imgData, startheight, startwidth, endheight, endwidth, im
         for (var j = startwidth; j < endwidth; j += 4) {
 
             let index = j + (i * (imgwidth) * 4);
-            
+
 
 
             // Sum total for each colour
@@ -197,6 +197,45 @@ function setColors() {
 
     }
 
+}
+function save() {
+
+    var myWindow = window.open("", "MsgWindow", "width=300,height=130");
+
+    /* const xmlhttp = new XMLHttpRequest();
+ 
+     xmlhttp.open("GET", "public_html/dbConnection.php");
+ 
+     console.log (xmlhttp);*/
+    myWindow.document.write("<p>Are you sure you want to save?</p> <input id='nameField' value='Name' type='text'> <div><button id='save'>Save</button> <button id='nsave'>Don't Save</button></div>");
+
+    myWindow.document.getElementById("nsave").onclick = (() => { myWindow.close(); });
+    myWindow.document.getElementById("save").onclick = (() => {
+        console.log(document.getElementById("block0").firstElementChild.innerHTML);
+        jQuery.ajax({
+            type: "POST",
+            url: './dbConnection.php',
+            dataType: 'json',
+            data: {
+                functionname: 'sendNewPaletteToDb', arguments: [
+                    1, myWindow.document.getElementById("save").value,
+                    document.getElementById("block0").firstElementChild.innerHTML,
+                    document.getElementById("block1").firstElementChild.innerHTML,
+                    document.getElementById("block2").firstElementChild.innerHTML,
+                    document.getElementById("block3").firstElementChild.innerHTML,
+                    document.getElementById("block4").firstElementChild.innerHTML]
+            },
+            success: function (obj, textstatus) {
+                if( !('error' in obj) ) {
+                    yourVariable = obj.result;
+                }
+                else {
+                    console.log(obj.error);
+                }
+          }
+        });
+        myWindow.close();
+    });
 }
 setTimeout(() => {
 
