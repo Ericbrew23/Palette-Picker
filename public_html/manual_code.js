@@ -6,7 +6,7 @@ function setSelected(e) {
     selectedBox = e.srcElement;
 }
 function setColorBox(e) {
-
+	
     var canvas = e.srcElement;
     var ctx = canvas.getContext('2d');
 
@@ -14,7 +14,7 @@ function setColorBox(e) {
     var selectedColor = selectedBox;
 
 
-
+	console.log(e.srcElement);
 
     var x = e.layerX;
     var y = e.layerY;
@@ -68,6 +68,7 @@ function resetColor() {
     }
 }
 function updateGradient(e) {
+	
     let value = e.srcElement.value;
     let colorSwitch;
     switch (Math.floor(value / 255)) {
@@ -134,6 +135,7 @@ function save() {
         jQuery.ajax({
             type: "POST",
             url: './dbConnection.php',
+		dataType: 'json',
             data: {
                 functionname: 'sendNewPaletteToDb', arguments: [
                     1, myWindow.document.getElementById("save").value,
