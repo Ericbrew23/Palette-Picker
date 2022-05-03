@@ -121,6 +121,15 @@ function sendNewPaletteToDb($userID, $paletteName, $hex1, $hex2, $hex3, $hex4, $
     return sendToDB($sql);
 }
 
+function sendNewPaletteToDb($paletteName, $hex1, $hex2, $hex3, $hex4, $hex5){
+    //sets user_id to 1 (for users without logins)
+    $sql = "INSERT INTO palette (USER_ID, PALETTE_NAME, HEXCODE1, HEXCODE2, 
+    HEXCODE3, HEXCODE4, HEXCODE5, DATE_CREATED, NUM_VIEWS) VALUES ('1', '"
+    . $paletteName . "', '" . $hex1 . "', '" . $hex2 . "', '" . $hex3 . "', '" . $hex4 . 
+    "', '" . $hex5 . "', now(), '0')";
+    return sendToDB($sql);
+}
+
 function getUserHashedPasswordFromDB($searchString)
 {
     $sql = "SELECT USER_PASSWORD FROM user WHERE
