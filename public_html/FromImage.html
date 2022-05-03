@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <head>
     <title>
@@ -21,7 +21,7 @@
             height: 70px;
             width: 70px;
             left: 50%;
-            top: 20%;
+            top: 40%;
         }
 
         #block1 {
@@ -30,7 +30,7 @@
             height: 70px;
             width: 70px;
             left: 50%;
-            top: 30%;
+            top: 50%;
         }
         #block2 {
             position: absolute;
@@ -38,7 +38,7 @@
             height: 70px;
             width: 70px;
             left: 50%;
-            top: 40%;
+            top: 60%;
         }
         #block3 {
             position: absolute;
@@ -46,7 +46,7 @@
             height: 70px;
             width: 70px;
             left: 50%;
-            top: 50%;
+            top: 70%;
         }
         #block4 {
             position: absolute;
@@ -54,7 +54,7 @@
             height: 70px;
             width: 70px;
             left: 50%;
-            top: 60%;
+            top: 80%;
         }
         
         #canvas{
@@ -72,8 +72,8 @@
 
 </head>
 
-<div id="rainbowImg">
-    <img src="images/RainbowHeader.png" alt="A rainbow gradient with 
+<div >
+    <img id="rainbowImg" src="images/RainbowHeader.png" alt="A rainbow gradient with 
       black stripes." />
 
 </div>
@@ -102,7 +102,10 @@
     <div id = "buttons" >
         <button id="button" style="position: absolute;"class= "buttons" onclick="openFile()">Open Image</button>
         <button id="save" style="position: absolute; left:10%;" class= "buttons"  onclick="save()">Save</button>
+        <a href="Pallet_screen.html" style="position: absolute; left:17%;"><button type="button">Create Manually</button></a> 
+  
     </div>
+    
 
     
     <script src="Colorpicker.js">

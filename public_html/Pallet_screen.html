@@ -1,5 +1,6 @@
 <title id='titlename'> Palette </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <head>
     <style>
         .slider {
@@ -28,11 +29,11 @@
             background-color: rgb(38, 0, 255);
             height: 70px;
             width: 70px;
-            left: 10%;
-            top: 50%;
+            left: 20%;
+            top: auto;
         }
 
-        #title0 {
+        .title {
             pointer-events: none;
         }
 
@@ -41,64 +42,59 @@
             background-color: rgb(255, 0, 0);
             height: 70px;
             width: 70px;
-            left: 20%;
-            top: 50%;
+            left: 27%;
+            top: auto;
         }
 
-        #title1 {
-            pointer-events: none;
-        }
+       
 
         #block2 {
             position: absolute;
             background-color: rgb(255, 0, 0);
             height: 70px;
             width: 70px;
-            left: 30%;
-            top: 50%;
+            left: 34%;
+            top: auto;
         }
 
-        #title2 {
-            pointer-events: none;
-        }
+       
 
         #block3 {
             position: absolute;
             background-color: rgb(255, 0, 0);
             height: 70px;
             width: 70px;
-            left: 40%;
-            top: 50%;
+            left: 41%;
+            top: auto;
         }
 
-        #title3 {
-            pointer-events: none;
-        }
+     
 
         #block4 {
             position: absolute;
             background-color: rgb(255, 0, 0);
             height: 70px;
             width: 70px;
-            left: 50%;
-            top: 50%;
+            left: 48%;
+            top: auto;
         }
 
-        #title4 {
+        
+
+        #rainbowImg {
+            object-fit: fill;
+            max-width: 100%;
+            height:auto;  
             pointer-events: none;
+
         }
-	  #rainbowImg {
- 	   object-fit: fill;
- 	   max-width: 100%;
- 	   height:auto;  
-	  }
     </style>
 
 </head>
 
 
-<div id="rainbowImg">
-    <img src="images/RainbowHeader.png" alt="A rainbow gradient with 
+<div >
+    <img id="rainbowImg" src="images/RainbowHeader.png" alt="A rainbow gradient with 
       black stripes." />
 
 </div>
@@ -109,19 +105,19 @@
         var ctx = c.getContext('2d');
         var imageData = ctx.createImageData(500, 250);
 
-        for (let i = 0; i < 250; i ++) {
-            for (let j = 0; j < 2000; j +=4) {
+        for (let i = 0; i < 250; i++) {
+            for (let j = 0; j < 2000; j += 4) {
                 let index = j + (i * 2000)
 
-                let dom = 255-(Math.floor(255*i /250))
-            
-                let sub = 255-(Math.floor(255*j/2000))-(Math.floor(255*i /250))
+                let dom = 255 - (Math.floor(255 * i / 250))
+
+                let sub = 255 - (Math.floor(255 * j / 2000)) - (Math.floor(255 * i / 250))
 
                 // Modify pixel data
                 imageData.data[index + 0] = dom;        // R value
                 imageData.data[index + 1] = sub;        // G value
                 imageData.data[index + 2] = sub;        // B value
-                imageData.data[index + 3] = 255;      // A value
+                imageData.data[index + 3] = 255;        // A value
             }
         }
 
@@ -134,19 +130,19 @@
 
 <div id="Colour blocks">
     <div id="block0" onclick="setSelected(event);">
-        <p id="title0" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+        <p id="title0" class="title" onclick="setSelected(event.srcElement.parentElement.click());"></p>
     </div>
     <div id="block1" onclick="setSelected(event);">
-        <p id="title1" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+        <p id="title1" class="title" onclick="setSelected(event.srcElement.parentElement.click());"></p>
     </div>
     <div id="block2" onclick="setSelected(event);">
-        <p id="title2" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+        <p id="title2" class="title" onclick="setSelected(event.srcElement.parentElement.click());"></p>
     </div>
     <div id="block3" onclick="setSelected(event);">
-        <p id="title3" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+        <p id="title3" class="title" onclick="setSelected(event.srcElement.parentElement.click());"></p>
     </div>
     <div id="block4" onclick="setSelected(event);">
-        <p id="title4" onclick="setSelected(event.srcElement.parentElement.click());"></p>
+        <p id="title4" class="title" onclick="setSelected(event.srcElement.parentElement.click());"></p>
     </div>
 </div>
 
@@ -154,3 +150,5 @@
 
 
 <button name="Save_Button" onClick="save();">Finish</button>
+
+<a href="FromImage.html"><button type="button">Create From Image</button></a>
