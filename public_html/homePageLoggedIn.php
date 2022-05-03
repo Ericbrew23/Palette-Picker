@@ -14,6 +14,7 @@
     
     <ul>
       <li><p id="list">Welcome, <?php echo $user ?></p></li>
+      <li><a href="search.php">Search</a></li>
       <!--<li><a href="homePageLoggedIn.html">(LogginHP)</a></li>-->
     </ul>
 

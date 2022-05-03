@@ -4,7 +4,7 @@
   
     <div class="topnav">
       <ul>
-        <li><input type="text" placeholder="Search.."></li>
+        <li><a href="search.php">Search</a></li>
         <li><a class="active" href="#home">Alerts</a></li>
         <li><a class="active" href=#profile>Profile</a></li>
       </ul>
