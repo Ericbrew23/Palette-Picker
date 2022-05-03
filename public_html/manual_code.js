@@ -133,7 +133,7 @@ function save() {
         console.log(document.getElementById("block0").firstElementChild.innerHTML);
         jQuery.ajax({
             type: "POST",
-            url: './public_html/dbConnection.php',
+            url: './dbConnection.php',
             data: {
                 functionname: 'sendNewPaletteToDb', arguments: [
                     1, myWindow.document.getElementById("save").value,
