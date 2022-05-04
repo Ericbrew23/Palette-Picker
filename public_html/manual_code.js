@@ -136,7 +136,7 @@ function save() {
         jQuery.ajax({
             type: "POST",
             url: './dbConnection.php',
-		    dataType: 'json',
+		  
             data: {
                 functionname: 'sendNewPaletteToDb', arguments: [
                     1, myWindow.document.getElementById("nameField").value,
@@ -146,15 +146,7 @@ function save() {
                     Number("0x" + document.getElementById("block3").firstElementChild.innerHTML.substring(1)),
                     Number("0x" + document.getElementById("block4").firstElementChild.innerHTML.substring(1))]
             },
-            success: function (obj, textstatus) {
-                if( !('error' in obj) ) {
-                    console.log("succeses?~?!");
-                    yourVariable = obj.result;
-                }
-                else {
-                    console.log(obj.error);
-                }
-          }
+            
         });
         myWindow.close();
     });
