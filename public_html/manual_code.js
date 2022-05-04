@@ -131,7 +131,7 @@ function save() {
 
     myWindow.document.getElementById("nsave").onclick = (() => { myWindow.close(); });
     myWindow.document.getElementById("save").onclick = (() => {
-        console.log(myWindow.document.getElementById("save").value);
+        console.log(myWindow.document.getElementById("nameField").value);
         
         jQuery.ajax({
             type: "POST",
@@ -139,7 +139,7 @@ function save() {
 		    dataType: 'json',
             data: {
                 functionname: 'sendNewPaletteToDb', arguments: [
-                    1, myWindow.document.getElementById("save").value,
+                    1, myWindow.document.getElementById("nameField").value,
                     Number(document.getElementById("block0").firstElementChild.innerHTML.substring(1)),
                     Number(document.getElementById("block1").firstElementChild.innerHTML.substring(1)),
                     Number(document.getElementById("block2").firstElementChild.innerHTML.substring(1)),
