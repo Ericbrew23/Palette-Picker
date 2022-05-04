@@ -9,8 +9,7 @@
     </title>
 
     <style>
-        * { padding: 0; margin: 0;}
-       #img{
+       .imgs{
            height: 300px;
            width: 500px;
        }
@@ -61,11 +60,6 @@
         #canvas{
             display:none;
         }
-        #imgHolder{
-        border: 5px solid #333;
-        background-color: #333;
-        margin: 0;
-        }
 	  #rainbowImg {
  	   object-fit: fill;
  	   max-width: 100%;
@@ -77,15 +71,20 @@
     </style>
 
 </head>
-<body>
-    <div id="imgHolder">
-        <img id="rainbowImg" src="images/RainbowHeader.png" alt="A rainbow gradient with 
-          black stripes." />
-    
-    </div>
+<li><a href="index.html">Home</a></li>
+<div >
+    <img id="rainbowImg" src="images/RainbowHeader.png" alt="A rainbow gradient with 
+      black stripes." />
 
-    <canvas id="canvas"></canvas>
-    <img id="img" >
+</div>
+
+
+<body>
+
+    <canvas id="canvas" "></canvas>
+    <img class="imgs" id="img">
+    
+
     <div id="preview"></div>
     <div id="block0">
         <p id="title0"></p>
@@ -103,13 +102,15 @@
         <p id="title4"></p>
     </div>
     <div id = "buttons" >
-        <button id="button" style="position: absolute;" class="buttons" onclick="openFile()">Open Image</button>
+        <button id="button" style="position: absolute;"class= "buttons" onclick="openFile()">Open Image</button>
         <button id="save" style="position: absolute; left:10%;" class= "buttons"  onclick="save()">Save</button>
         <a href="Pallet_screen.html" style="position: absolute; left:17%;"><button type="button">Create Manually</button></a> 
   
     </div>
     
-
+    <img class="imgs" onclick="setCanvas(event)" id="img1" src="images/Flowers.jpg">
+    <img class="imgs" onclick="setCanvas(event)" id="img2" src="images/Starry.jpg">
+    <img class="imgs" onclick="setCanvas(event)" id="img3" src="images/Wheat.jpg">
     
     <script src="Colorpicker.js">
         

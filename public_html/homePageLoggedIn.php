@@ -27,7 +27,7 @@
     </div>
 
     <div id="L_PCButton">
-      <button type="button">Go to Palette Creator</button>
+    <a href="Pallet_screen.html"><button type="button">Create From Image</button></a>
     </div>
   </body>
 </html>

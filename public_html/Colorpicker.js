@@ -30,6 +30,12 @@ async function openFile() {
 
 }
 
+function setCanvas(e){
+    imageElement = document.getElementById('img');
+    imageElement.src = e.srcElement.src;
+    setColors();
+}
+
 function averageColor() {
     // Function to set the background
     // color of the second div as
@@ -198,6 +204,9 @@ function setColors() {
     }
 
 }
+
+
+
 function save() {
 
     var myWindow = window.open("", "MsgWindow", "width=300,height=130");
