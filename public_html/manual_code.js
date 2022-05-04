@@ -127,11 +127,11 @@ function save() {
  
      console.log (xmlhttp);*/
      
-    myWindow.document.write("<?php require('./dbConnection.php'); ?> <p>Are you sure you want to save?</p> <input id='nameField' value='Name' type='text'> <div><button id='save'>Save</button> <button id='nsave'>Don't Save</button></div>");
+    myWindow.document.write(" <p>Are you sure you want to save?</p> <input id='nameField' value='Name' type='text'> <div><button id='save'>Save</button> <button id='nsave'>Don't Save</button></div>");
 
     myWindow.document.getElementById("nsave").onclick = (() => { myWindow.close(); });
     myWindow.document.getElementById("save").onclick = (() => {
-        console.log(myWindow.document.getElementById("nameField").value);
+        console.log(Number("0x" + document.getElementById("block0").firstElementChild.innerHTML.substring(1)));
         
         jQuery.ajax({
             type: "POST",
@@ -140,11 +140,11 @@ function save() {
             data: {
                 functionname: 'sendNewPaletteToDb', arguments: [
                     1, myWindow.document.getElementById("nameField").value,
-                    Number(document.getElementById("block0").firstElementChild.innerHTML.substring(1)),
-                    Number(document.getElementById("block1").firstElementChild.innerHTML.substring(1)),
-                    Number(document.getElementById("block2").firstElementChild.innerHTML.substring(1)),
-                    Number(document.getElementById("block3").firstElementChild.innerHTML.substring(1)),
-                    Number(document.getElementById("block4").firstElementChild.innerHTML.substring(1))]
+                    Number("0x" + document.getElementById("block0").firstElementChild.innerHTML.substring(1)),
+                    Number("0x" + document.getElementById("block1").firstElementChild.innerHTML.substring(1)),
+                    Number("0x" + document.getElementById("block2").firstElementChild.innerHTML.substring(1)),
+                    Number("0x" + document.getElementById("block3").firstElementChild.innerHTML.substring(1)),
+                    Number("0x" + document.getElementById("block4").firstElementChild.innerHTML.substring(1))]
             },
             success: function (obj, textstatus) {
                 if( !('error' in obj) ) {
