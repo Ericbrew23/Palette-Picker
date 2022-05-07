@@ -1,3 +1,6 @@
+
+//Uses javascript file API to allow the user to select an image of their computer
+//Loads it into the canvas to be used for algorithm 
 async function openFile() {
     let [file] = await window.showOpenFilePicker({
         types: [
@@ -17,7 +20,7 @@ async function openFile() {
     const img = document.getElementById("img");
     img.classList.add("obj");
     img.file = file;
-    document.getElementById("preview").appendChild(img); // Assuming that "preview" is the div output where the content will be displayed.
+    document.getElementById("preview").appendChild(img); 
 
     const reader = new FileReader();
     reader.onload = await (function (aImg) { return function (e) { aImg.src = e.target.result; }; })(img);
@@ -30,6 +33,8 @@ async function openFile() {
 
 }
 
+//test function to get around SSL restrictions
+//loads a preselected image into the canvas to be algorithmed
 function setCanvas(e){
     imageElement = document.getElementById('img');
     imageElement.src = e.srcElement.src;
@@ -37,8 +42,7 @@ function setCanvas(e){
 }
 
 function averageColor() {
-    // Function to set the background
-    // color of the second div as
+    // Function to set the background color of the second div as
     // calculated average color of image
 
     // Create the canvas element
@@ -93,8 +97,6 @@ function averageColor() {
 
 
 
-    // Get the length of image data object
-
 
     var colors = [];
     colors.push(rgb0);
@@ -108,6 +110,7 @@ function averageColor() {
 
 }
 
+//Algorithm for finding average color per partition
 function findPartition(imgData, startheight, startwidth, endheight, endwidth, imgwidth) {
     rgb = { r: 0, g: 0, b: 0 };
     count = 0;
@@ -153,7 +156,7 @@ function findPartition(imgData, startheight, startwidth, endheight, endwidth, im
 
 
 
-
+//Unused code to find the compliment of a color
 function compliment(rgb) {
     rgb.r = 255 - rgb.r;
     rgb.g = 255 - rgb.g;
@@ -186,6 +189,8 @@ function setColors() {
 
         }
 
+        //Based on how dark the color is. and how saturated the color is, 
+        //changes the text to black or white to be more readable
         let saturated = Boolean(((rgb[i].r > 200) || (rgb[i].g > 200) || (rgb[i].b > 200))
             && !((rgb[i].r > 200) && (rgb[i].g > 200)) && !((rgb[i].b > 200) && (rgb[i].g > 200)));
 
@@ -206,21 +211,18 @@ function setColors() {
 }
 
 
-
+//Opens a new window allowing a user to name and save their palettes
 function save() {
 
     var myWindow = window.open("", "MsgWindow", "width=300,height=130");
 
-    /* const xmlhttp = new XMLHttpRequest();
- 
-     xmlhttp.open("GET", "public_html/dbConnection.php");
- 
-     console.log (xmlhttp);*/
+   
     myWindow.document.write("<p>Are you sure you want to save?</p> <input id='nameField' value='Name' type='text'> <div><button id='save'>Save</button> <button id='nsave'>Don't Save</button></div>");
 
     myWindow.document.getElementById("nsave").onclick = (() => { myWindow.close(); });
     myWindow.document.getElementById("save").onclick = (() => {
         console.log(document.getElementById("block0").firstElementChild.innerHTML);
+        //this code does not work, Ajax was not stronger than all of grease
         jQuery.ajax({
             type: "POST",
             url: './dbConnection.php',

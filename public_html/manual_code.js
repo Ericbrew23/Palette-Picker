@@ -1,9 +1,14 @@
 
 
-
+//Function for selecting palette boxes
+//When a box is clicked, sets that as the box used in functions
 function setSelected(e) {
     selectedBox = e.srcElement;
+    
 }
+
+
+//Takes the box previously selected and sets it to the color clicked on the graph
 function setColorBox(e) {
 	
     var canvas = e.srcElement;
@@ -12,8 +17,6 @@ function setColorBox(e) {
 
     var selectedColor = selectedBox;
 
-
-	console.log(e.layerX+ ","+e.layerY);
 
     var x = e.layerX;
     var y = e.layerY;
@@ -24,7 +27,7 @@ function setColorBox(e) {
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255})`;
     selectedColor.style.background = rgba;
 
-
+    //Takes color and makes it into the standard hexcode format
     var readint = [data[0].toString(16), data[1].toString(16), data[2].toString(16)];
     for (let j = 0; j < readint.length; j++) {
 
@@ -34,7 +37,8 @@ function setColorBox(e) {
 
     }
 
-
+    //Based on how dark the color is. and how saturated the color is, 
+    //changes the text to black or white to be more readable
     let saturated = Boolean(((data[0] > 200) || (data[1] > 200) || (data[2] > 200))
         && !((data[0] > 200) && (data[1] > 200)) && !((data[2] > 200) && (data[1] > 200)));
 
@@ -51,6 +55,8 @@ function setColorBox(e) {
     return rgba;
 
 }
+
+//Gets each block, resets the color to black
 function resetColor() {
 
     for (let i = 0; i < 5; i++) {
@@ -66,10 +72,16 @@ function resetColor() {
 
     }
 }
+
+//When User interacts with hue slider, 
+//adjusts color gradient to match selected hue
 function updateGradient(e) {
 	
     let value = e.srcElement.value;
     let colorSwitch;
+
+    //Sets a color vector based on which partition of the slider 
+    //the cursor is in
     switch (Math.floor(value / 255)) {
         default:
         case 0:
@@ -97,6 +109,7 @@ function updateGradient(e) {
     const gridheight = 300;
     let imageData = ctx.createImageData(gridwidth, gridheight);
 
+    //Creates a gradient based on the color vector from the last step
     for (let i = 0; i < gridheight; i++) {
         for (let j = 0; j < (gridwidth * 4); j += 4) {
             let index = j + (i * gridwidth * 4)
@@ -117,26 +130,23 @@ function updateGradient(e) {
     ctx.putImageData(imageData, 20, 20);
 }
 
+
+//Opens a new window allowing a user to name and save their palettes
 function save() {
 
     var myWindow = window.open("", "MsgWindow", "width=300,height=130");
 
-    /* const xmlhttp = new XMLHttpRequest();
- 
-     xmlhttp.open("GET", "public_html/dbConnection.php");
- 
-     console.log (xmlhttp);*/
-     
+
     myWindow.document.write(" <p>Are you sure you want to save?</p> <input id='nameField' value='Name' type='text'> <div><button id='save'>Save</button> <button id='nsave'>Don't Save</button></div>");
 
     myWindow.document.getElementById("nsave").onclick = (() => { myWindow.close(); });
     myWindow.document.getElementById("save").onclick = (() => {
         console.log(Number("0x" + document.getElementById("block0").firstElementChild.innerHTML.substring(1)));
-        
+        //this code does not work, Ajax was not stronger than all of grease
         jQuery.ajax({
             type: "POST",
             url: './dbConnection.php',
-		  
+		    dataType: 'json',
             data: {
                 functionname: 'sendNewPaletteToDb', arguments: [
                     1, myWindow.document.getElementById("nameField").value,
@@ -146,7 +156,7 @@ function save() {
                     Number("0x" + document.getElementById("block3").firstElementChild.innerHTML.substring(1)),
                     Number("0x" + document.getElementById("block4").firstElementChild.innerHTML.substring(1))]
             },
-            
+           
         });
         myWindow.close();
     });
